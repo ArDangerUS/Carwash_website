@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chemické čištění salonu - S-Shine Autodetailing Studio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header */
+        .header {
+            background: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1e40af;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: #1e40af;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            color: #666;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #1e40af;
+        }
+
+        /* Main content */
+        .main-content {
+            padding-top: 100px;
+            min-height: 100vh;
+        }
+
+        /* Breadcrumbs */
+        .breadcrumbs {
+            background: #f8fafc;
+            padding: 20px 0;
+        }
+
+        .breadcrumb-nav {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .breadcrumb-nav a {
+            color: #1e40af;
+            text-decoration: none;
+        }
+
+        .breadcrumb-nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Page Content */
+        .page-content {
+            padding: 60px 0;
+            background: white;
+        }
+
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 60px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background: #f8fafc;
+            padding: 30px;
+            border-radius: 15px;
+            height: fit-content;
+            position: sticky;
+            top: 120px;
+        }
+
+        .sidebar-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .service-categories {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .service-categories li {
+            margin-bottom: 10px;
+        }
+
+        .service-categories a {
+            color: #666;
+            text-decoration: none;
+            padding: 8px 0;
+            display: block;
+            transition: color 0.3s;
+        }
+
+        .service-categories a:hover,
+        .service-categories a.active {
+            color: #1e40af;
+            font-weight: bold;
+        }
+
+        .package-options {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .package-options h4 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .package-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 10px;
+            background: #374151;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            border-radius: 8px;
+            transition: background 0.3s;
+        }
+
+        .package-btn:hover {
+            background: #1e40af;
+        }
+
+        .package-btn.active {
+            background: #1e40af;
+        }
+
+        .price-list {
+            list-style: none;
+        }
+
+        .price-item {
+            padding: 8px 0;
+            border-bottom: 1px solid #e5e7eb;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .price-item:last-child {
+            border-bottom: none;
+        }
+
+        /* Main Content */
+        .main-section {
+            background: white;
+        }
+
+        .page-title {
+            font-size: 36px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(45deg, #374151, #4b5563);
+            border-radius: 15px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300"><rect width="800" height="300" fill="%23374151"/><rect x="150" y="100" width="500" height="100" fill="%231e40af" opacity="0.8" rx="50"/><circle cx="300" cy="150" r="30" fill="white" opacity="0.6"/><circle cx="500" cy="150" r="25" fill="white" opacity="0.4"/><text x="400" y="160" text-anchor="middle" fill="white" font-size="20">Detailing Chemické čištění</text></svg>');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .service-description {
+            margin-bottom: 40px;
+        }
+
+        .service-description p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .highlight-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 8px;
+        }
+
+        .highlight-box p {
+            color: #92400e;
+            font-weight: 500;
+            margin: 0;
+        }
+
+        .info-section {
+            background: #f8fafc;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .info-text {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .services-offered {
+            margin-bottom: 40px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+
+        .service-card {
+            background: #f8fafc;
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 4px solid #1e40af;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #1e40af;
+            margin-bottom: 10px;
+        }
+
+        .card-description {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* Price Section */
+        .price-section {
+            background: #374151;
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+        }
+
+        .price-section h3 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 25px;
+            color: #60a5fa;
+        }
+
+        .price-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .price-group {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        .price-group h4 {
+            color: #1e40af;
+            margin-bottom: 20px;
+            font-size: 18px;
+            border-bottom: 2px solid #1e40af;
+            padding-bottom: 10px;
+        }
+
+        .price-list-main {
+            list-style: none;
+        }
+
+        .price-list-main li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .price-list-main li:last-child {
+            border-bottom: none;
+        }
+
+        .service-name {
+            color: #d1d5db;
+            flex: 1;
+            margin-right: 15px;
+        }
+
+        .service-price {
+            color: #60a5fa;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        /* Important Notice */
+        .important-notice {
+            background: linear-gradient(135deg, #1e40af, #3b82f6);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .notice-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .notice-text {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .cta-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .cta-subtitle {
+            font-size: 16px;
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: white;
+            color: #dc2626;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: #f8fafc;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            background: #1f2937;
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-section h3 {
+            color: #1e40af;
+            margin-bottom: 20px;
+        }
+
+        .footer-section p, .footer-section li {
+            color: #d1d5db;
+            line-height: 1.6;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            padding: 5px 0;
+        }
+
+        .footer-section ul li a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: #1e40af;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #374151;
+            color: #9ca3af;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .content-wrapper {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .sidebar {
+                position: static;
+                order: 2;
+            }
+
+            .page-title {
+                font-size: 28px;
+            }
+
+            .hero-image {
+                height: 200px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .price-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <div class="logo">S-Shine</div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">DOMŮ</a></li>
+                    <li><a href="services.html" class="active">SLUŽBY</a></li>
+                    <li><a href="portfolio.html">PORTFOLIO</a></li>
+                    <li><a href="about.html">O NÁS</a></li>
+                    <li><a href="contact.html">KONTAKTY</a></li>
+                </ul>
+                <div class="social-icons">
+                    <a href="#">📘</a>
+                    <a href="#">📺</a>
+                    <a href="#">📷</a>
+                    <span>🇨🇿 CZ</span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Breadcrumbs -->
+        <section class="breadcrumbs">
+            <div class="container">
+                <div class="breadcrumb-nav">
+                    <a href="index.html">Hlavní stránka</a> »
+                    <a href="services.html">Služby</a> »
+                    Chemické čištění salonu
+                </div>
+            </div>
+        </section>
+
+        <!-- Page Content -->
+        <section class="page-content">
+            <div class="container">
+                <div class="content-wrapper">
+                    <!-- Sidebar -->
+                    <aside class="sidebar">
+                        <h3 class="sidebar-title">Všechny služby</h3>
+                        <ul class="service-categories">
+                            <li><a href="chemical-cleaning.html" class="active">Detailing chemické čištění</a></li>
+                            <li><a href="protective-coatings.html">Ochranné povlaky</a></li>
+                            <li><a href="detailing-polishing.html">Detailing leštění</a></li>
+                        </ul>
+
+                        <div class="package-options">
+                            <h4>Balíčky</h4>
+                            <a href="#" class="package-btn">Kompakt</a>
+                            <a href="#" class="package-btn active">Střední třída</a>
+                            <a href="#" class="package-btn">Universál/Hatchback</a>
+                            <a href="#" class="package-btn">Mimo silniční/Minivan</a>
+                        </div>
+
+                        <ul class="price-list">
+                            <li class="price-item">Sedadla - od 1000 Kč</li>
+                            <li class="price-item">Podlaha - od 1500 Kč</li>
+                            <li class="price-item">Koberečky - od 500 Kč</li>
+                            <li class="price-item">Sjedná textilie (jeden řad) - od 1600 Kč</li>
+                            <li class="price-item">Sjedná kůže/koženkovec (jeden řad) - od 1000 Kč</li>
+                            <li class="price-item">Kondicionér kůže sedadel (salon) - 1000 Kč</li>
+                            <li class="price-item">Panel/konzole - od 1000 Kč</li>
+                            <li class="price-item">Dveřní karta - od 300 Kč</li>
+                            <li class="price-item">Základní chemické čištění - od 4200 Kč</li>
+                            <li class="price-item">Detailing Chemické čištění - od 8200 Kč</li>
+                        </ul>
+                    </aside>
+
+                    <!-- Main Content -->
+                    <div class="main-section">
+                        <h1 class="page-title">Chemické čištění salonu auto - Praha</h1>
+
+                        <div class="hero-image fade-in">
+                            <!-- Sem vložte fotografii chemického čištění -->
+                        </div>
+
+                        <div class="service-description fade-in">
+                            <p>Chybnou je představa, že chemické čištění je potřebné pouze velmi znečištěným automobilům. Úklid v domácích podmínkách nebo v myčkách, to je jako studený sprcha, ale auto potřebuje SPA, tedy komplexní čištění alespoň jednou za rok, a péči o kůži - ne méně než jednou za tři měsíce.</p>
+
+                            <p>Pod chemickým čištěním auta se prodávají zcela různé věci za různými cenami. Zpravidla na myčkách - to je prach s mokrým úklidem, v lepším případě lehké čištění sedadel.</p>
+                        </div>
+
+                        <div class="info-section fade-in">
+                            <h2 class="section-title">Co nabízíme</h2>
+                            <p class="info-text">Naopak komplex detailing chemického čištění, který nabízíme ve studiu, zahrnuje široký přehled služeb pro čištění absolutně všech prvků salonu s jejich částečnou demontáží, a také další ochranu. Pouhé vyčíslení složek komplexu zabere více času, než na některých myčkách dělají mokré čištění.</p>
+                        </div>
+
+                        <div class="services-offered fade-in">
+                            <h2 class="section-title">Naše služby chemického čištění</h2>
+                            <div class="services-grid">
+                                <div class="service-card">
+                                    <h3 class="card-title">Sedadla</h3>
+                                    <p class="card-description">Hloubkové čištění všech typů potahů - textilie, kůže, alkantara</p>
+                                </div>
+                                <div class="service-card">
+                                    <h3 class="card-title">Podlaha a koberečky</h3>
+                                    <p class="card-description">Odstranění všech nečistot a skvrn z podlahových krytin</p>
+                                </div>
+                                <div class="service-card">
+                                    <h3 class="card-title">Panely a konzole</h3>
+                                    <p class="card-description">Čištění a ošetření všech plastových a kožených povrchů</p>
+                                </div>
+                                <div class="service-card">
+                                    <h3 class="card-title">Dveřní karty</h3>
+                                    <p class="card-description">Detailní čištění potahů a výplní dveří</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="important-notice fade-in">
+                            <h3 class="notice-title">Důležité upozornění</h3>
+                            <p class="notice-text">Náklady a doba provádění takových prací závisí na stavu salonu automobilu a jeho rozměrech. Salon středního sedanu s příznakem běžného používání vyčistí jeden mistr za den, a silně znečištěný minivan se třemi řadami sedadel může trvat i více než dva dny.</p>
+                        </div>
+
+                        <div class="price-section fade-in">
+                            <h3>Ceník chemického čištění</h3>
+                            <div class="price-grid">
+                                <div class="price-group">
+                                    <h4>Jednotlivé služby</h4>
+                                    <ul class="price-list-main">
+                                        <li>
+                                            <span class="service-name">Sedadla</span>
+                                            <span class="service-price">od 1000 Kč</span>
+                                        </li>
+                                        <li>
+                                            <span class="service-name">Podlaha</span>
+                                            <span class="service-price">od 1500 Kč</span>
+                                        </li>
+                                        <li>
+                                            <span class="service-name">Koberečky</span>
+                                            <span class="service-price">od 500 Kč</span>
+                                        </li>
+                                        <li>
+                                            <span class="service-name">Sjedná textilie (jeden řad)</span>
+                                            <span class="service-price">od 1600 Kč</span>
+                                        </li>
+                                        <li>
+                                            <span class="service-name">Sjedná kůže/koženkovec (jeden řad)</span>
+                                            <span class="service-price">od 1000 Kč</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="price-group">
+                                    <h4>Komplexní služby</h4>
+                                    <ul class="price-list-main">
+                                        <li>
+                                            <span class="service-name">Kondicionér kůže sedadel (salon)</span>
+                                            <span class="service-price">1000 Kč</span>
+                                        </li>
+                                        <li>
+                                            <span class="service-name">Panel/konzole</span>
+                                            <span class="service-price">od 1000 Kč</span>
+                                        </li>
+                                        <li>
+                                            <span class="service-name">Dveřní karta</span>
+                                            <span class="service-price">od 300 Kč</span>
+                                        </li>
+                                        <li>
+                                            <span class="service-name">Základní chemické čištění</span>
+                                            <span class="service-price">od 4200 Kč</span>
+                                        </li>
+                                        <li>
+                                            <span class="service-name">Detailing Chemické čištění</span>
+                                            <span class="service-price">od 8200 Kč</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="cta-section fade-in">
+                            <h3 class="cta-title">Potřebujete vyčistit salon?</h3>
+                            <p class="cta-subtitle">Kontaktujte nás ještě dnes a získejte bezplatnou konzultaci o nejlepším způsobu čištění vašeho automobilu</p>
+                            <a href="contact.html" class="btn">KONTAKTUJTE NÁS</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo" style="color: #1e40af; font-size: 24px; margin-bottom: 20px;">S-Shine</div>
+                    <p>MAPA STRÁNEK</p>
+                    <p><strong>TELEFON</strong><br>0966896969</p>
+                    <p><strong>EMAIL</strong><br>s.shine.det@gmail.com</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Naše služby</h3>
+                    <ul>
+                        <li><a href="#">Detailing</a></li>
+                        <li><a href="#">Chemické čištění</a></li>
+                        <li><a href="#">Ochranné povlaky</a></li>
+                        <li><a href="#">Detailing leštění</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Pracovní doba</h3>
+                    <p>PN-PÁ: 8:30 do 20:00</p>
+                    <p>Sobota: 9:30 do 15:00</p>
+                    <p>Neděle: volno</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin: 40px 0;">
+                <h3>Naše adresa</h3>
+                <p>📍 Česká republika, Praha, ul. Příkolínská 21</p>
+                <p>📞 +38(096) 689-69-69</p>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2024. Všechna práva vyhrazena podle českého zákona. <strong>Mapa stránek</strong></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header background change on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'white';
+                header.style.backdropFilter = 'none';
+            }
+        });
+
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(item => {
+            observer.observe(item);
+        });
+
+        // Package button functionality
+        document.querySelectorAll('.package-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelectorAll('.package-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detailing Leštění - S-Shine Autodetailing Studio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header */
+        .header {
+            background: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1e40af;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: #1e40af;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            color: #666;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #1e40af;
+        }
+
+        /* Main content */
+        .main-content {
+            padding-top: 100px;
+            min-height: 100vh;
+        }
+
+        /* Breadcrumbs */
+        .breadcrumbs {
+            background: #f8fafc;
+            padding: 20px 0;
+        }
+
+        .breadcrumb-nav {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .breadcrumb-nav a {
+            color: #1e40af;
+            text-decoration: none;
+        }
+
+        .breadcrumb-nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Page Content */
+        .page-content {
+            padding: 60px 0;
+            background: white;
+        }
+
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 60px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background: #f8fafc;
+            padding: 30px;
+            border-radius: 15px;
+            height: fit-content;
+            position: sticky;
+            top: 120px;
+        }
+
+        .sidebar-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .service-categories {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .service-categories li {
+            margin-bottom: 10px;
+        }
+
+        .service-categories a {
+            color: #666;
+            text-decoration: none;
+            padding: 8px 0;
+            display: block;
+            transition: color 0.3s;
+        }
+
+        .service-categories a:hover,
+        .service-categories a.active {
+            color: #1e40af;
+            font-weight: bold;
+        }
+
+        .package-options {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .package-options h4 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .package-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 10px;
+            background: #374151;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            border-radius: 8px;
+            transition: background 0.3s;
+        }
+
+        .package-btn:hover {
+            background: #1e40af;
+        }
+
+        .package-btn.active {
+            background: #1e40af;
+        }
+
+        .price-list {
+            list-style: none;
+        }
+
+        .price-item {
+            padding: 8px 0;
+            border-bottom: 1px solid #e5e7eb;
+            color: #666;
+            font-size: 14px;
+        }
+
+        .price-item:last-child {
+            border-bottom: none;
+        }
+
+        /* Main Content */
+        .main-section {
+            background: white;
+        }
+
+        .page-title {
+            font-size: 36px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(45deg, #1e40af, #3b82f6);
+            border-radius: 15px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300"><rect width="800" height="300" fill="%23dc2626"/><circle cx="200" cy="150" r="60" fill="white" opacity="0.3"/><circle cx="600" cy="150" r="80" fill="white" opacity="0.2"/><text x="400" y="160" text-anchor="middle" fill="white" font-size="24">Detailing Leštění Karoserie</text></svg>');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .service-description {
+            margin-bottom: 40px;
+        }
+
+        .service-description p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .benefits-section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 25px;
+        }
+
+        .benefits-list {
+            list-style: none;
+        }
+
+        .benefits-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: #f8fafc;
+            border-radius: 10px;
+            transition: background 0.3s;
+        }
+
+        .benefits-list li:hover {
+            background: #e0f2fe;
+        }
+
+        .check-icon {
+            color: #22c55e;
+            font-weight: bold;
+            font-size: 18px;
+            min-width: 20px;
+        }
+
+        .benefit-text {
+            color: #374151;
+            font-weight: 500;
+        }
+
+        .why-section {
+            background: #f8fafc;
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+        }
+
+        .why-section h3 {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .why-section p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        /* Video Section */
+        .video-section {
+            margin-bottom: 40px;
+        }
+
+        .video-container {
+            width: 100%;
+            height: 300px;
+            background: #374151;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-placeholder {
+            text-align: center;
+        }
+
+        .play-button {
+            width: 80px;
+            height: 80px;
+            background: rgba(220, 38, 38, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .play-button:hover {
+            background: rgba(220, 38, 38, 1);
+        }
+
+        .play-button::after {
+            content: '▶';
+            color: white;
+            font-size: 24px;
+            margin-left: 5px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .cta-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .cta-subtitle {
+            font-size: 16px;
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: #dc2626;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #b91c1c;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1f2937;
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-section h3 {
+            color: #1e40af;
+            margin-bottom: 20px;
+        }
+
+        .footer-section p, .footer-section li {
+            color: #d1d5db;
+            line-height: 1.6;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            padding: 5px 0;
+        }
+
+        .footer-section ul li a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: #1e40af;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #374151;
+            color: #9ca3af;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .content-wrapper {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .sidebar {
+                position: static;
+                order: 2;
+            }
+
+            .page-title {
+                font-size: 28px;
+            }
+
+            .hero-image {
+                height: 200px;
+            }
+        }
+
+        /* Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <div class="logo">S-Shine</div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">DOMŮ</a></li>
+                    <li><a href="services.html" class="active">SLUŽBY</a></li>
+
+                    <li><a href="about.html">O NÁS</a></li>
+                    <li><a href="contact.html">KONTAKTY</a></li>
+                </ul>
+                <div class="social-icons">
+                    <a href="#">📘</a>
+                    <a href="#">📺</a>
+                    <a href="#">📷</a>
+                    <span>🇨🇿 CZ</span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Breadcrumbs -->
+        <section class="breadcrumbs">
+            <div class="container">
+                <div class="breadcrumb-nav">
+                    <a href="index.html">Hlavní stránka</a> »
+                    <a href="services.html">Služby</a> »
+                    Detailing Leštění
+                </div>
+            </div>
+        </section>
+
+        <!-- Page Content -->
+        <section class="page-content">
+            <div class="container">
+                <div class="content-wrapper">
+                    <!-- Sidebar -->
+                    <aside class="sidebar">
+                        <h3 class="sidebar-title">Všechny služby</h3>
+                        <ul class="service-categories">
+                            <li><a href="chemical-cleaning.html">Detailing chemické čištění</a></li>
+                            <li><a href="protective-coatings.html">Ochranné povlaky</a></li>
+                            <li><a href="detailing-polishing.html" class="active">Detailing leštění</a></li>
+                        </ul>
+
+                        <div class="package-options">
+                            <h4>Balíčky</h4>
+                            <a href="#" class="package-btn">Kompakt</a>
+                            <a href="#" class="package-btn active">Střední třída</a>
+                            <a href="#" class="package-btn">Universál/Hatchback</a>
+                            <a href="#" class="package-btn">Mimo silniční/Minivan</a>
+                        </div>
+
+                        <ul class="price-list">
+                            <li class="price-item">Lokální leštění - od 700 Kč</li>
+                            <li class="price-item">Leštění světlometů (kosmetické) - od 1000 Kč pár</li>
+                            <li class="price-item">Renovace světlometů (broušení) - od 4500 Kč pár</li>
+                            <li class="price-item">Kosmetické leštění karoserie - od 6000 Kč</li>
+                            <li class="price-item">Obnovovací leštění - od 10000 Kč</li>
+                            <li class="price-item">Tvrdý vosk - 2000 Kč</li>
+                            <li class="price-item">Slanty - 2000 Kč</li>
+                            <li class="price-item">Keramika (1 vrstva) - 4500 Kč</li>
+                            <li class="price-item">Antideštník čelního skla (přední/panoramatické) - 1500 Kč</li>
+                            <li class="price-item">Antideštník čelního skla (boční) - 2500 Kč</li>
+                            <li class="price-item">Antideštník čelního skla (celé auto) - 4000 Kč</li>
+                            <li class="price-item">Čištění kol (jedna) - od 1000 Kč</li>
+                            <li class="price-item">Čištění výfukových plynů (jedna) - od 1000 Kč</li>
+                            <li class="price-item">Čištění výfukových plynů (jedna) - od 500 Kč</li>
+                        </ul>
+                    </aside>
+
+                    <!-- Main Content -->
+                    <div class="main-section">
+                        <h1 class="page-title">Leštění aut - Praha</h1>
+
+                        <div class="hero-image fade-in">
+                            <!-- Sem vložte fotografii leštění -->
+                        </div>
+
+                        <div class="service-description fade-in">
+                            <p>Tato služba má mnoho názvů, což v zásadě znamená jedno a totéž - zlepšení vzhledu laku karoserie kvůli mechanickému vlivu na jeho průhlednou vrchní vrstvu.</p>
+
+                            <p>Proč často přidávají slovo detailing? Abychom odlišili kvalitní a složitou službu od neprofesionálního rychlého odstranění škrábanců, které jen zanechává artefakty na karoserii ve formě hologramů a kriticky snižuje vrstvu laku na autě.</p>
+                        </div>
+
+                        <div class="benefits-section fade-in">
+                            <h2 class="section-title">Co nám dává leštění karoserie automobilu:</h2>
+                            <ul class="benefits-list">
+                                <li>
+                                    <span class="check-icon">✓</span>
+                                    <span class="benefit-text">Odstranění „zamlženosti" laku.</span>
+                                </li>
+                                <li>
+                                    <span class="check-icon">✓</span>
+                                    <span class="benefit-text">Odstranění škrábanců nebo defektů laku různé hloubky</span>
+                                </li>
+                                <li>
+                                    <span class="check-icon">✓</span>
+                                    <span class="benefit-text">Čištění lakové povrchu od znečištění, se kterými si neporadí mytí.</span>
+                                </li>
+                                <li>
+                                    <span class="check-icon">✓</span>
+                                    <span class="benefit-text">Obnovení barvení laku</span>
+                                </li>
+                                <li>
+                                    <span class="check-icon">✓</span>
+                                    <span class="benefit-text">Přidání lesku laku</span>
+                                </li>
+                                <li>
+                                    <span class="check-icon">✓</span>
+                                    <span class="benefit-text">Posílení hloubky a omládnutí barvy</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="why-section fade-in">
+                            <h3>Proč je třeba leštit každé auto.</h3>
+                            <p>Vliv okolního prostředí na auto podobný zubnímu náletu. Bez ohledu na to, že si čistíte zuby dvakrát denně, stále je třeba čistit dvakrát ročně u stomatologa. Automobil má také něco, co se týká každodenního čištění a nanášení ochranných povlaků.</p>
+
+                            <p>Dokonce i nový automobil má znečištění obdržená při přepravě a skladování, které poškozují lak. Pokud si umyjete automobil a pak provedete jemným prstem po automobilu, pocítíte, že brud na něm se nahromadil, lak na dotyk bude drsný, a na slunci automobil bude mít matnou vzhled drobnými škrábanci.</p>
+                        </div>
+
+                        <div class="video-section fade-in">
+                            <div class="video-container">
+                                <div class="video-placeholder">
+                                    <div class="play-button"></div>
+                                    <p>Mercedes-Benz V300 w447 scratch removal</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="cta-section fade-in">
+                            <h3 class="cta-title">Připraveni začít?</h3>
+                            <p class="cta-subtitle">Kontaktujte nás ještě dnes a získejte bezplatnou konzultaci</p>
+                            <a href="contact.html" class="btn">KONTAKTUJTE NÁS</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo" style="color: #1e40af; font-size: 24px; margin-bottom: 20px;">S-Shine</div>
+                    <p>MAPA STRÁNEK</p>
+                    <p><strong>TELEFON</strong><br>0966896969</p>
+                    <p><strong>EMAIL</strong><br>s.shine.det@gmail.com</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Naše služby</h3>
+                    <ul>
+                        <li><a href="#">Detailing</a></li>
+                        <li><a href="#">Chemické čištění</a></li>
+                        <li><a href="#">Ochranné povlaky</a></li>
+                        <li><a href="#">Detailing leštění</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Pracovní doba</h3>
+                    <p>PN-PÁ: 8:30 do 20:00</p>
+                    <p>Sobota: 9:30 do 15:00</p>
+                    <p>Neděle: volno</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin: 40px 0;">
+                <h3>Naše adresa</h3>
+                <p>📍 Česká republika, Praha, ul. Příkolínská 21</p>
+                <p>📞 +38(096) 689-69-69</p>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2024. Všechna práva vyhrazena podle českého zákona. <strong>Mapa stránek</strong></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header background change on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'white';
+                header.style.backdropFilter = 'none';
+            }
+        });
+
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(item => {
+            observer.observe(item);
+        });
+
+        // Package button functionality
+        document.querySelectorAll('.package-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelectorAll('.package-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
