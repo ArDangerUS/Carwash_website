@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Služby a Ceny - S-Shine Autodetailing Studio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header */
+        .header {
+            background: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1e40af;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: #1e40af;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            color: #666;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #1e40af;
+        }
+
+        /* Main content */
+        .main-content {
+            padding-top: 100px;
+            min-height: 100vh;
+        }
+
+        /* Breadcrumbs */
+        .breadcrumbs {
+            background: #f8fafc;
+            padding: 20px 0;
+        }
+
+        .breadcrumb-nav {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .breadcrumb-nav a {
+            color: #1e40af;
+            text-decoration: none;
+        }
+
+        .breadcrumb-nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .page-title {
+            font-size: 42px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        /* Services Section */
+        .services-section {
+            background: #374151;
+            padding: 80px 0;
+            color: white;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 0;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .service-image {
+            width: 100%;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .service-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(30, 64, 175, 0.8), rgba(59, 130, 246, 0.6));
+        }
+
+        .service-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            background: rgba(220, 38, 38, 0.9);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .service-content {
+            padding: 30px;
+        }
+
+        .service-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .service-description {
+            color: #d1d5db;
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        /* Price Lists */
+        .price-section {
+            background: white;
+            padding: 80px 0;
+        }
+
+        .price-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-top: 50px;
+        }
+
+        .price-column {
+            background: #f8fafc;
+            border-radius: 15px;
+            padding: 40px;
+        }
+
+        .price-title {
+            font-size: 32px;
+            font-weight: bold;
+            color: #1e40af;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .price-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: #dc2626;
+        }
+
+        .price-list {
+            list-style: none;
+        }
+
+        .price-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #e5e7eb;
+            transition: background 0.3s;
+        }
+
+        .price-item:hover {
+            background: rgba(30, 64, 175, 0.05);
+            padding-left: 10px;
+            padding-right: 10px;
+            border-radius: 8px;
+        }
+
+        .price-item:last-child {
+            border-bottom: none;
+        }
+
+        .service-name {
+            flex: 1;
+            color: #374151;
+            font-weight: 500;
+        }
+
+        .service-price {
+            color: #1e40af;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .cta-title {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .cta-subtitle {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: transparent;
+            color: white;
+            text-decoration: none;
+            border: 2px solid white;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: white;
+            color: #dc2626;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1f2937;
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-section h3 {
+            color: #1e40af;
+            margin-bottom: 20px;
+        }
+
+        .footer-section p, .footer-section li {
+            color: #d1d5db;
+            line-height: 1.6;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            padding: 5px 0;
+        }
+
+        .footer-section ul li a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section ul li a:hover {
+            color: #1e40af;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #374151;
+            color: #9ca3af;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .price-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .price-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+
+            .page-title {
+                font-size: 32px;
+            }
+        }
+
+        /* Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Service card backgrounds */
+        .detailing-polishing {
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200"><rect width="400" height="200" fill="%23374151"/><circle cx="200" cy="100" r="80" fill="%231e40af" opacity="0.3"/><text x="200" y="110" text-anchor="middle" fill="white" font-size="16">Detailing Leštění</text></svg>');
+        }
+
+        .protective-coatings {
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200"><rect width="400" height="200" fill="%23374151"/><rect x="100" y="50" width="200" height="100" fill="%231e40af" opacity="0.3"/><text x="200" y="110" text-anchor="middle" fill="white" font-size="16">Ochranné povlaky</text></svg>');
+        }
+
+        .chemical-cleaning {
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200"><rect width="400" height="200" fill="%23374151"/><polygon points="200,40 120,160 280,160" fill="%231e40af" opacity="0.3"/><text x="200" y="110" text-anchor="middle" fill="white" font-size="16">Chemické čištění</text></svg>');
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <div class="logo">S-Shine</div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">DOMŮ</a></li>
+                    <li><a href="services.html" class="active">SLUŽBY</a></li>
+                    <li><a href="portfolio.html">PORTFOLIO</a></li>
+                    <li><a href="about.html">O NÁS</a></li>
+                    <li><a href="contact.html">KONTAKTY</a></li>
+                </ul>
+                <div class="social-icons">
+                    <a href="#">📘</a>
+                    <a href="#">📺</a>
+                    <a href="#">📷</a>
+                    <span>🇨🇿 CZ</span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Breadcrumbs -->
+        <section class="breadcrumbs">
+            <div class="container">
+                <div class="breadcrumb-nav">
+                    <a href="index.html">Hlavní stránka</a> » Služby a Ceny
+                </div>
+            </div>
+        </section>
+
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <h1 class="page-title">Služby a Ceny</h1>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services-section">
+            <div class="container">
+                <div class="services-grid">
+                    <!-- Detailing Polishing -->
+                    <div class="service-card fade-in detailing-polishing" onclick="window.location.href='detailing-polishing.html'">
+                        <div class="service-image">
+                            <div class="service-overlay">Detailing leštění karoserie</div>
+                        </div>
+                        <div class="service-content">
+                            <h3 class="service-title">Detailing Leštění</h3>
+                            <p class="service-description">Lokální leštění, kosmetické leštění, obnovovací leštění, leštění optiky, maskování škrábanců</p>
+                        </div>
+                    </div>
+
+                    <!-- Protective Coatings -->
+                    <div class="service-card fade-in protective-coatings" onclick="window.location.href='protective-coatings.html'">
+                        <div class="service-image">
+                            <div class="service-overlay">Ochranné povlaky</div>
+                        </div>
+                        <div class="service-content">
+                            <h3 class="service-title">Ochranné povlaky</h3>
+                            <p class="service-description">Keramické povlaky, přírodní tvrdý vosk, hybridní vosky, slanty, antideštník</p>
+                        </div>
+                    </div>
+
+                    <!-- Chemical Cleaning -->
+                    <div class="service-card fade-in chemical-cleaning" onclick="window.location.href='chemical-cleaning.html'">
+                        <div class="service-image">
+                            <div class="service-overlay">Detailing chemické čištění</div>
+                        </div>
+                        <div class="service-content">
+                            <h3 class="service-title">Detailing chemické čištění</h3>
+                            <p class="service-description">Komplexní chemické čištění salonu, čištění jednotlivých prvků, péče o kůži, čištění ventilačního systému</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Price Lists -->
+        <section class="price-section">
+            <div class="container">
+                <div class="price-grid">
+                    <!-- Body Prices -->
+                    <div class="price-column fade-in">
+                        <h2 class="price-title">Karoserie</h2>
+                        <ul class="price-list">
+                            <li class="price-item">
+                                <span class="service-name">Lokální leštění</span>
+                                <span class="service-price">od 200 Kč</span>
+                            </li>
+                            <li class="price-item">
+                                <span class="service-name">Leštění světlometů (pár)</span>
+                                <span class="service-price">od 400 Kč pár</span>
+                            </li>
+                            <li class="price-item">
+                                <span class="service-name">Leštění světlometů (broušení)</span>
+                                <span class="service-price">od 1200 Kč pár</span>
+                            </li>
+                            <li class="price-item">
+                                <span class="service-name">Kosmetické leštění karoserie</span>
+                                <span class="service-price">od 5200 Kč</span>
+                            </li>
+                            <li class="price-item">
+                                <span class="service-name">Obnovovací leštění</span>
+                                <span class="service-price">od 7800 Kč</span>
+                            </li>
+                            <li class="price-item">
+                                <span class="service-name">Tvrdý vosk</span>
+                                <span class="service-price">800 Kč</span>
+                            </li>
+                            <li class="price-item">
+                                <span class="service-name">Slanty</span>
+                                <span class="service-price">800 Kč</span>
+                            </li>
+                            <li class="price-item">
+                                <span class="service-name">Keramika (1 vrstva)</span>
+                                <span class="service-price">5200 Kč</span>
+                            </li>
+                            <li class="price-item">
+                                <span class="service-name">Antideštník (čelní sklo/panorama)</span>
+                                <span class="service-price">250 Kč</span>
+                            </li>
+                            <li class="price-item">
+                                <span class="service-name">Antideštník (boční skla)</span>
+                                <span class="service-price">500 Kč</span>
+                            </li>
+                            <li class="price-item">
+                                <span class="service-name">Antideštník (celé auto)</span>
+                                <span class="service-price">1000 Kč</span>
+                            </li>
+                            <li class="price-item">
+                                <span class="service-name">Čištění kol (jedna)</span>
+                                <span class="service-price">od 200 Kč</span>
+                            </li>
+                            <li class="price-item">
+                                <span class="service-name">Čištění disků (jedna)</span>
+                                <span class="service-price">od 50 Kč</span>
+                            </li>
+                            <li class="price-item">
+                                <span class="service-name">Odstranění slinutí od nálepek/živic</span>
+                                <span class="service-price">od 100 Kč</span>
+                            </li>
+                            <li class="price-item">
+                                <span class="service-name">Odstranění asfaltu</span>
+                                <span class="service-price">od 200 Kč</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Interior Prices -->
+                    <div class="price-column fade-in">
+                        <h2 class="price-title">Salon</h2>
+                        <ul class="price-list">
+                            <li class="price-item">
+                                <span class="service-name">Sedadla</span>
+                                <span class="service-price">od 1000 Kč</span>
+                            </li>
+                            <li class="price-item">
+                                <span class="service-name">Podlaha</span>
+                                <span class="service-price">od 1000 Kč</span>
+                            </li>
+                            <li class="price-item">
+                                <span class="service-name">Koberečky</span>
+                                <span class="service-price">od 150 Kč</span>
+                            </li>
+                            <li class="price-item">
+                                <span class="service-name">Sjedná textilie (jeden řad)</span>
+                                <span class="service-price">od 1200 Kč</span>
+                            </li>
+                            <li class="price-item">
+                                <span class="service-name">Sjedná (kůže/koženkovec)</span>
+                                <span class="service-price">od 500 Kč</span>
+                            </li>
+                            <li class="price-item">
+                                <span class="service-name">Kondicionér kůže sedadel (salon)</span>
+                                <span class="service-price">300 Kč (400 Kč pro tři řady)</span>
+                            </li>
+                            <li class="price-item">
+                                <span class="service-name">Panel/konzole</span>
+                                <span class="service-price">od 300 Kč</span>
+                            </li>
+                            <li class="price-item">
+                                <span class="service-name">Dveřní karta</span>
+                                <span class="service-price">od 150 Kč</span>
+                            </li>
+                            <li class="price-item">
+                                <span class="service-name">Komplex Detailing</span>
+                                <span class="service-price">od 5000 Kč</span>
+                            </li>
+                            <li class="price-item">
+                                <span class="service-name">Komplex «A na míru za 1500»</span>
+                                <span class="service-price">1500 Kč</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="container">
+                <h2 class="cta-title">Připraveni začít?</h2>
+                <p class="cta-subtitle">Kontaktujte nás ještě dnes a získejte bezplatnou konzultaci</p>
+                <a href="contact.html" class="btn">KONTAKTUJTE NÁS</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo" style="color: #1e40af; font-size: 24px; margin-bottom: 20px;">S-Shine</div>
+                    <p>MAPA STRÁNEK</p>
+                    <p><strong>TELEFON</strong><br>0966896969</p>
+                    <p><strong>EMAIL</strong><br>s.shine.det@gmail.com</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Naše služby</h3>
+                    <ul>
+                        <li><a href="#">Detailing</a></li>
+                        <li><a href="#">Chemické čištění</a></li>
+                        <li><a href="#">Ochranné povlaky</a></li>
+                        <li><a href="#">Detailing leštění</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Pracovní doba</h3>
+                    <p>PN-PÁ: 8:30 do 20:00</p>
+                    <p>Sobota: 9:30 do 15:00</p>
+                    <p>Neděle: volno</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin: 40px 0;">
+                <h3>Naše adresa</h3>
+                <p>📍 Česká republika, Praha, ul. Příkolínská 21</p>
+                <p>📞 +38(096) 689-69-69</p>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2024. Všechna práva vyhrazena podle českého zákona. <strong>Mapa stránek</strong></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header background change on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'white';
+                header.style.backdropFilter = 'none';
+            }
+        });
+
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(item => {
+            observer.observe(item);
+        });
+
+        // Service card hover effects
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
