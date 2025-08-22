@@ -21,7 +21,7 @@
         .header {
             background: white;
             padding: 15px 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             position: fixed;
             width: 100%;
             top: 0;
@@ -45,7 +45,7 @@
             display: flex;
             align-items: center;
         }
-        
+
         .logo img {
             height: 100%;
             width: auto;
@@ -190,7 +190,7 @@
             background: white;
             padding: 40px;
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
 
         .form-group {
@@ -252,7 +252,7 @@
         .map-container {
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
             height: 400px;
         }
 
@@ -423,252 +423,251 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <nav class="nav">
-                <div class="logo">
-            <img src="images/logo12carwash.png" alt="SmartWash Logo">
-        </div>
-                <ul class="nav-menu">
-                    <li><a href="index.html">DOMŮ</a></li>
-                    <li><a href="services.html">SLUŽBY</a></li>
+<!-- Header -->
+<header class="header">
+    <div class="container">
+        <nav class="nav">
+            <div class="logo">
+                <img src="images/logo12carwash.png" alt="SmartWash Logo">
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">DOMŮ</a></li>
+                <li><a href="services.html">SLUŽBY</a></li>
 
-                    <li><a href="about.html">O NÁS</a></li>
-                    <li><a href="contact.html" class="active">KONTAKTY</a></li>
-                </ul>
+                <li><a href="about.html">O NÁS</a></li>
+                <li><a href="contact.html" class="active">KONTAKTY</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- Main Content -->
+<main class="main-content">
+    <!-- Breadcrumbs -->
+    <section class="breadcrumbs">
+        <div class="container">
+            <div class="breadcrumb-nav">
+                <a href="index.html">Hlavní stránka</a> » Naše kontakty
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <h1 class="page-title">Naše kontakty</h1>
+
+            <div class="contact-content">
+                <!-- Contact Info -->
+                <div class="contact-info fade-in">
+                    <div class="contact-item">
+                        <h3>📍 Praha, ul. Vlastina 889, 161 00 Praha 6 - Ruzyně</h3>
+                    </div>
+
+                    <div class="contact-item">
+                        <h3>✉️ Email: <a href="mailto:smartwashcz@gmail.com">smartwashcz@gmail.com</a></h3>
+                    </div>
+
+                    <div class="contact-item">
+                        <h3>📞 Telefon: <a href="tel:+420773544788">+420 773 544 788</a></h3>
+                    </div>
+
+                    <div class="motto-section">
+                        <h4 class="motto-title">Naše motto:</h4>
+                        <p class="motto-text">Jsme tým, pro který je práce něčím větším, než jen způsobem obohacení o
+                            peníze!</p>
+                        <p class="motto-text">Jsme tým odborníků, kteří milují svou práci.</p>
+                        <p class="motto-text">Každý den si užíváme to, co děláme.</p>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="contact-form fade-in">
+                    <div class="form-group">
+                        <label for="name">Jméno</label>
+                        <input type="text" id="name" name="name" placeholder="Vaše jméno">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" placeholder="váš@email.cz">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Zpráva</label>
+                        <textarea id="message" name="message" placeholder="Vaše zpráva..."></textarea>
+                    </div>
+
+                    <button type="button" class="submit-btn" onclick="showMessage()">ODESLAT →</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <div class="map-container fade-in">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d720.7027050140816!2d14.31505135759935!3d50.08946112204996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470bbfc9f1155561%3A0x605903a0852b6ba6!2zVmxhc3RpbmEgODg5LzIzLCAxNjEgMDAgUHJhaGEgNi1SdXp5bsSbLCDQp9C10YXQuNGP!5e1!3m2!1sru!2sua!4v1755898513303!5m2!1sru!2sua"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Info Section -->
+    <section class="footer-info">
+        <div class="container">
+            <!-- Contact Cards -->
+            <div class="footer-contacts">
+                <div class="contact-card">
+                    <div class="contact-icon">📍</div>
+                    <div class="contact-details">
+                        <h4>Naše adresa</h4>
+                        <p>Praha, ul. Vlastina 889, 161 00 Praha 6 - Ruzyně</p>
+                    </div>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">📞</div>
+                    <div class="contact-details">
+                        <h4>Telefon</h4>
+                        <p>+420 773 544 788</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Grid -->
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <div class="logo" style="height: 40px; margin-bottom: 20px;">
+                        <img src="images/logo12carwash.png" alt="SmartWash Logo">
+                    </div>
+                    <p>MAPA STRÁNEK</p>
+                    <p><strong>TELEFON</strong><br>+420 773 544 788</p>
+                    <p><strong>EMAIL</strong><br>smartwashcz@gmail.com</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Naše služby</h3>
+                    <ul>
+                        <li><a href="#">Detailing</a></li>
+                        <li><a href="#">Chemické čištění</a></li>
+                        <li><a href="#">Ochranné povlaky</a></li>
+                        <li><a href="#">Leštění karoserie</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Pracovní doba</h3>
+                    <p>PN-PÁ: 8:30 do 20:00</p>
+                    <p>Sobota: 9:30 do 15:00</p>
+                    <p>Neděle: volno</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="images/logo12carwash.png" alt="SmartWash Logo" style="height: 30px;">
+            </div>
+            <nav class="footer-nav">
+                <a href="index.html">Domů</a>
+                <a href="services.html">Služby</a>
+                <a href="about.html">O nás</a>
+                <a href="contact.html">Kontakty</a>
             </nav>
+            <div style="color: #d1d5db;">🇨🇿 CZ</div>
         </div>
-    </header>
 
-    <!-- Main Content -->
-    <main class="main-content">
-        <!-- Breadcrumbs -->
-        <section class="breadcrumbs">
-            <div class="container">
-                <div class="breadcrumb-nav">
-                    <a href="index.html">Hlavní stránka</a> » Naše kontakty
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section class="contact-section">
-            <div class="container">
-                <h1 class="page-title">Naše kontakty</h1>
-
-                <div class="contact-content">
-                    <!-- Contact Info -->
-                    <div class="contact-info fade-in">
-                        <div class="contact-item">
-                            <h3>📍 Praha, ul. Vlastina 889, 161 00 Praha 6 - Ruzyně</h3>
-                        </div>
-
-                        <div class="contact-item">
-                            <h3>✉️ Email: <a href="mailto:smartwashcz@gmail.com">smartwashcz@gmail.com</a></h3>
-                        </div>
-
-                        <div class="contact-item">
-                            <h3>📞 Telefon: <a href="tel:+420773544788">+420 773 544 788</a></h3>
-                        </div>
-
-                        <div class="motto-section">
-                            <h4 class="motto-title">Naše motto:</h4>
-                            <p class="motto-text">Jsme tým, pro který je práce něčím větším, než jen způsobem obohacení o peníze!</p>
-                            <p class="motto-text">Jsme tým odborníků, kteří milují svou práci.</p>
-                            <p class="motto-text">Každý den si užíváme to, co děláme.</p>
-                        </div>
-                    </div>
-
-                    <!-- Contact Form -->
-                    <div class="contact-form fade-in">
-                        <div class="form-group">
-                            <label for="name">Jméno</label>
-                            <input type="text" id="name" name="name" placeholder="Vaše jméno">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="email">E-mail</label>
-                            <input type="email" id="email" name="email" placeholder="váš@email.cz">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="message">Zpráva</label>
-                            <textarea id="message" name="message" placeholder="Vaše zpráva..."></textarea>
-                        </div>
-
-                        <button type="button" class="submit-btn" onclick="showMessage()">ODESLAT →</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Map Section -->
-        <section class="map-section">
-            <div class="container">
-                <div class="map-container fade-in">
-                    <iframe
-                        src="https://www.google.com/maps/place/Vlastina+889%2F23,+161+00+Praha+6-Ruzyn%C4%9B,+%D0%A7%D0%B5%D1%85%D0%B8%D1%8F/@50.0894611,14.3150514,166m/data=!3m1!1e3!4m6!3m5!1s0x470bbfc9f1155561:0x605903a0852b6ba6!8m2!3d50.0894469!4d14.3153496!16s%2Fg%2F11c2hb30n9?entry=ttu&g_ep=EgoyMDI1MDgxOS4wIKXMDSoASAFQAw%3D%3D"
-                        allowfullscreen=""
-                        loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade">
-                    </iframe>
-                </div>
-            </div>
-        </section>
-
-        <!-- Footer Info Section -->
-        <section class="footer-info">
-            <div class="container">
-                <!-- Contact Cards -->
-                <div class="footer-contacts">
-                                            <div class="contact-card">
-                            <div class="contact-icon">📍</div>
-                            <div class="contact-details">
-                                <h4>Naše adresa</h4>
-                                <p>Praha, ul. Vlastina 889, 161 00 Praha 6 - Ruzyně</p>
-                            </div>
-                        </div>
-                                            <div class="contact-card">
-                            <div class="contact-icon">📞</div>
-                            <div class="contact-details">
-                                <h4>Telefon</h4>
-                                <p>+420 773 544 788</p>
-                            </div>
-                        </div>
-                </div>
-
-                <!-- Footer Grid -->
-                <div class="footer-grid">
-                    <div class="footer-section">
-                        <div class="logo" style="height: 40px; margin-bottom: 20px;">
-                    <img src="images/logo12carwash.png" alt="SmartWash Logo">
-                </div>
-                        <p>MAPA STRÁNEK</p>
-                                        <p><strong>TELEFON</strong><br>+420 773 544 788</p>
-                <p><strong>EMAIL</strong><br>smartwashcz@gmail.com</p>
-                    </div>
-
-                    <div class="footer-section">
-                        <h3>Naše služby</h3>
-                        <ul>
-                                            <li><a href="#">Detailing</a></li>
-                <li><a href="#">Chemické čištění</a></li>
-                <li><a href="#">Ochranné povlaky</a></li>
-                <li><a href="#">Leštění karoserie</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="footer-section">
-                        <h3>Pracovní doba</h3>
-                        <p>PN-PÁ: 8:30 do 20:00</p>
-                        <p>Sobota: 9:30 do 15:00</p>
-                        <p>Neděle: volno</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <img src="images/logo12carwash.png" alt="SmartWash Logo" style="height: 30px;">
-                </div>
-                <nav class="footer-nav">
-                    <a href="index.html">Domů</a>
-                    <a href="services.html">Služby</a>
-                    <a href="about.html">O nás</a>
-                    <a href="contact.html">Kontakty</a>
-                </nav>
-                <div style="color: #d1d5db;">🇨🇿 CZ</div>
-            </div>
-
-            <div class="footer-bottom">
-                <p><strong>Společnost:</strong> swaptrix s.r.o. | <strong>IČO:</strong> 21112312 | <strong>Sídlo:</strong> Sokolovská 428/130, Karlín, 186 00 Praha</p>
-                <p>© 2024. Všechna práva vyhrazena podle českého zákona. <strong>Mapa stránek</strong></p>
-            </div>
+        <div class="footer-bottom">
+            <p><strong>Společnost:</strong> swaptrix s.r.o. | <strong>IČO:</strong> 21112312 | <strong>Sídlo:</strong>
+                Sokolovská 428/130, Karlín, 186 00 Praha</p>
+            <p>© 2024. Všechna práva vyhrazena podle českého zákona. <strong>Mapa stránek</strong></p>
         </div>
-    </footer>
+    </div>
+</footer>
 
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Header background change on scroll
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('.header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-                header.style.backdropFilter = 'blur(10px)';
-            } else {
-                header.style.background = 'white';
-                header.style.backdropFilter = 'none';
+<script>
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
             }
         });
+    });
 
-        // Animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-in').forEach(item => {
-            observer.observe(item);
-        });
-
-        // Form submission (mock function since you don't need real functionality)
-        function showMessage() {
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-
-            if (name && email && message) {
-                alert('Děkujeme za vaši zprávu! Brzy se vám ozveme.');
-                // Clear form
-                document.getElementById('name').value = '';
-                document.getElementById('email').value = '';
-                document.getElementById('message').value = '';
-            } else {
-                alert('Prosím vyplňte všechna pole.');
-            }
+    // Header background change on scroll
+    window.addEventListener('scroll', function () {
+        const header = document.querySelector('.header');
+        if (window.scrollY > 100) {
+            header.style.background = 'rgba(255, 255, 255, 0.95)';
+            header.style.backdropFilter = 'blur(10px)';
+        } else {
+            header.style.background = 'white';
+            header.style.backdropFilter = 'none';
         }
+    });
 
-        // Form validation
-        document.querySelectorAll('input, textarea').forEach(field => {
-            field.addEventListener('blur', function() {
-                if (this.value.trim() === '') {
-                    this.style.borderColor = '#dc2626';
-                } else {
-                    this.style.borderColor = '#1e40af';
-                }
-            });
+    // Animation on scroll
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
 
-            field.addEventListener('focus', function() {
-                this.style.borderColor = '#1e40af';
-            });
+    const observer = new IntersectionObserver(function (entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
         });
-    </script>
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-in').forEach(item => {
+        observer.observe(item);
+    });
+
+    // Form submission (mock function since you don't need real functionality)
+    function showMessage() {
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+
+        if (name && email && message) {
+            alert('Děkujeme za vaši zprávu! Brzy se vám ozveme.');
+            // Clear form
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('message').value = '';
+        } else {
+            alert('Prosím vyplňte všechna pole.');
+        }
+    }
+
+    // Form validation
+    document.querySelectorAll('input, textarea').forEach(field => {
+        field.addEventListener('blur', function () {
+            if (this.value.trim() === '') {
+                this.style.borderColor = '#dc2626';
+            } else {
+                this.style.borderColor = '#1e40af';
+            }
+        });
+
+        field.addEventListener('focus', function () {
+            this.style.borderColor = '#1e40af';
+        });
+    });
+</script>
 </body>
 </html>
